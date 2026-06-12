@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EnergyAgent — AI agents that watch, verify, and value renewable energy</title>
-  <meta name="description" content="EnergyAgent deploys AI agents to watch, verify, and value renewable energy — automated NEPOOL-GIS reporting for operators and live, ground-truth array value for owners." />
+  <title>EnergyAgent — see exactly what your solar array is worth, live</title>
+  <meta name="description" content="Connect your inverter in one step and EnergyAgent turns ground-truth generation into a living dashboard of value: watts now, kilowatt-hours today, dollars forever. Per-inverter health that catches dead strings, shading, and comm gaps." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,83 +14,128 @@
       <span class="sun-dot" aria-hidden="true"></span>
       <span class="wordmark-text">EnergyAgent</span>
     </a>
-    <a class="header-link" href="https://solaroperator.org">solaroperator.org &rarr;</a>
+    <a class="header-link" href="https://solaroperator.org/accounts">Early access &rarr;</a>
   </header>
 
   <main>
     <!-- HERO -->
     <section class="hero">
-      <p class="eyebrow reveal">The energy intelligence layer</p>
-      <h1 class="reveal">AI agents that <span class="hl">watch</span>, <span class="hl">verify</span>, and <span class="hl">value</span> renewable energy.</h1>
-      <p class="subhead reveal">From the inverter on your roof to the registry that pays you — EnergyAgent turns real generation into verified, valued, ground-truth data.</p>
-    </section>
-
-    <!-- THE CORE: two doors -->
-    <section class="doors" aria-label="Choose your path">
-      <article class="door reveal">
-        <div class="door-glow" aria-hidden="true"></div>
-        <p class="door-kicker">For stamping agents &amp; solar operators</p>
-        <h2>NEPOOL Verifiers</h2>
-        <p class="door-body">Automated quarterly NEPOOL-GIS reporting, utility-portal auto-capture, and pixel-perfect workbooks. Let agents handle the filings while you handle the fleet.</p>
-        <ul class="door-list">
-          <li>Automated quarterly NEPOOL-GIS reporting</li>
-          <li>Utility portal auto-capture</li>
-          <li>Pixel-perfect workbooks</li>
-        </ul>
-        <a class="btn btn-primary" href="https://solaroperator.org/onboarding">Open Solar Operator</a>
-      </article>
-
-      <article class="door reveal">
-        <div class="door-glow" aria-hidden="true"></div>
-        <p class="door-kicker">For people who own arrays</p>
-        <h2>Array Owners</h2>
-        <p class="door-body">Connect your inverter, see live ground-truth generation, and watch your array's value tick up in real time. Your panels, finally measured at their true worth.</p>
-        <ul class="door-list">
-          <li>Connect your inverter in minutes</li>
-          <li>Live ground-truth generation</li>
-          <li>Value that ticks up in real time</li>
-        </ul>
-        <a class="btn btn-accent" href="https://solaroperator.org/accounts">
+      <p class="eyebrow reveal">For people who own solar arrays</p>
+      <h1 class="reveal">Your array is making you money. <span class="hl">See exactly how much</span> — live.</h1>
+      <p class="subhead reveal">Connect your inverter in one step. EnergyAgent turns ground-truth generation into a living dashboard of value: watts now, kilowatt-hours today, dollars forever.</p>
+      <p class="hero-cta reveal">
+        <a class="btn btn-primary" href="https://solaroperator.org/accounts">
           See your array's value
           <span class="badge">Early access</span>
         </a>
-      </article>
+      </p>
     </section>
 
-    <!-- FEATURE STRIP -->
-    <section class="features" aria-label="What you get">
-      <article class="feature reveal">
-        <span class="feature-icon" aria-hidden="true">
+    <!-- HOW IT WORKS -->
+    <section class="steps" aria-label="How it works">
+      <article class="step reveal">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="10" rx="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            <circle cx="12" cy="16" r="1.3" />
+          </svg>
+        </span>
+        <span class="step-num">Step 1</span>
+        <h3>Paste one login or API key</h3>
+        <p>No installers, no hardware, no spreadsheets. One credential from your inverter portal is all it takes to start.</p>
+      </article>
+
+      <article class="step reveal">
+        <span class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+        </span>
+        <span class="step-num">Step 2</span>
+        <h3>We discover every array automatically</h3>
+        <p>EnergyAgent maps every site, inverter, and string on your account — one rooftop or fifty — with nothing more to configure.</p>
+      </article>
+
+      <article class="step reveal">
+        <span class="step-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 12h3l2 6 4-14 2.5 8H21" />
           </svg>
         </span>
-        <h3>Live inverter data</h3>
-        <p>Stream real generation straight from your hardware — no estimates, no guesswork.</p>
+        <span class="step-num">Step 3</span>
+        <h3>Watch the value tick up</h3>
+        <p>Live power, verified RECs, and dollar value update in real time — ground truth from your hardware, not an estimate.</p>
       </article>
+    </section>
 
-      <article class="feature reveal">
-        <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
-            <path d="M9 12l2 2 4-4" />
-          </svg>
-        </span>
-        <h3>Verified RECs</h3>
-        <p>Every renewable energy certificate backed by audited, ground-truth measurement.</p>
-      </article>
+    <!-- GROUND TRUTH -->
+    <section class="ground" aria-label="Per-inverter health">
+      <div class="ground-copy reveal">
+        <p class="eyebrow">Ground truth, per inverter</p>
+        <h2>We catch the kWh you didn't know you were losing.</h2>
+        <p>Every inverter is compared against its own fleet, so weather cancels out — a passing cloud dims all of them equally, but a dead string only dims one. That's how EnergyAgent spots trouble the day it starts, not on next year's true-up.</p>
+        <ul class="ground-list">
+          <li>Dead strings and tripped optimizers</li>
+          <li>Shaded or soiled panels dragging output</li>
+          <li>Comm gaps where a site quietly stops reporting</li>
+        </ul>
+        <p class="ground-foot">Then we tell you the cost in plain language: <strong>not "DC fault 0x21" — "this inverter is down ~9 kWh/day, about $1.40."</strong></p>
+      </div>
 
-      <article class="feature reveal">
-        <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19V5" />
-            <path d="M4 19h16" />
-            <path d="M8 16l4-5 3 3 5-7" />
-          </svg>
-        </span>
-        <h3>Value you can see</h3>
-        <p>Watch your array's worth update in real time as it produces and as markets move.</p>
-      </article>
+      <div class="ground-mock reveal" aria-label="Example fleet health card">
+        <div class="mock-card">
+          <div class="mock-head">
+            <span class="mock-title">Fleet health</span>
+            <span class="mock-sub">12 inverters &middot; live</span>
+          </div>
+
+          <div class="mock-row">
+            <span class="mock-light is-green" aria-hidden="true"></span>
+            <div class="mock-meta">
+              <span class="mock-name">Inverter A · Barn roof</span>
+              <span class="mock-state state-green">Pulling its weight</span>
+            </div>
+            <span class="mock-val">4.8 kW</span>
+          </div>
+
+          <div class="mock-row">
+            <span class="mock-light is-amber" aria-hidden="true"></span>
+            <div class="mock-meta">
+              <span class="mock-name">Inverter B · South field</span>
+              <span class="mock-state state-amber">Underperforming &minus;12%</span>
+            </div>
+            <span class="mock-val">3.1 kW</span>
+          </div>
+
+          <div class="mock-row">
+            <span class="mock-light is-red" aria-hidden="true"></span>
+            <div class="mock-meta">
+              <span class="mock-name">Inverter C · Garage</span>
+              <span class="mock-state state-red">No data 30h</span>
+            </div>
+            <span class="mock-val">&mdash;</span>
+          </div>
+
+          <div class="mock-foot">
+            <span>Est. loss today</span>
+            <span class="mock-foot-val">~11 kWh &middot; $1.70</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENDOR STRIP -->
+    <section class="vendors reveal" aria-label="Supported inverter brands">
+      <span class="vendors-label">Works with</span>
+      <ul class="vendor-badges">
+        <li>SolarEdge</li>
+        <li>Enphase</li>
+        <li>Fronius</li>
+        <li>SMA</li>
+        <li class="vendor-more">more coming</li>
+      </ul>
     </section>
   </main>
 
@@ -101,7 +146,7 @@
       a Dyson Swarm Technologies product
     </p>
     <p class="footer-links">
-      <a href="https://solaroperator.org">solaroperator.org</a>
+      <a href="https://solaroperator.org">Running a NEPOOL verification practice? &rarr; Solar Operator</a>
       <span class="dot">&middot;</span>
       <a href="mailto:admin@solaroperator.org">admin@solaroperator.org</a>
     </p>

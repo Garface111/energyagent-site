@@ -43,8 +43,9 @@ a:hover {
 /* ---------- Layout helpers ---------- */
 .site-header,
 .hero,
-.doors,
-.features,
+.steps,
+.ground,
+.vendors,
 .site-footer {
   max-width: var(--max);
   margin-inline: auto;
@@ -146,94 +147,118 @@ a:hover {
   margin: 0 auto;
 }
 
-/* ---------- The doors ---------- */
-.doors {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  padding-top: 16px;
-  padding-bottom: 24px;
+.hero-cta {
+  margin: 34px 0 0;
 }
 
-.door {
+.hero-cta .btn {
+  align-self: center;
+}
+
+/* ---------- How it works ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  counter-reset: step;
+}
+
+.step {
   position: relative;
-  overflow: hidden;
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 38px 36px 40px;
-  display: flex;
-  flex-direction: column;
+  padding: 30px 28px 32px;
   border: 1px solid rgba(24, 24, 27, 0.05);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.door:hover {
-  transform: translateY(-4px);
+.step:hover {
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
 }
 
-.door-glow {
-  position: absolute;
-  top: -90px;
-  right: -90px;
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%);
-  pointer-events: none;
+.step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--green-deep);
+  margin-bottom: 16px;
 }
 
-.door:last-child .door-glow {
-  background: radial-gradient(circle, rgba(230, 180, 112, 0.22), transparent 70%);
+.step-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
-.door-kicker {
+.step-num {
+  display: block;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--muted);
-  margin: 0 0 14px;
+  color: var(--green-hover);
+  margin-bottom: 6px;
 }
 
-.door h2 {
-  font-size: clamp(1.7rem, 3vw, 2.1rem);
-  letter-spacing: -0.02em;
+.step h3 {
   margin: 0 0 8px;
-  font-weight: 800;
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
 }
 
-.door h2::after {
-  content: "";
-  display: block;
-  width: 46px;
-  height: 3px;
-  margin-top: 12px;
-  border-radius: 2px;
-  background: var(--ochre);
-}
-
-.door-body {
+.step p {
+  margin: 0;
   color: var(--muted);
-  margin: 16px 0 18px;
-  font-size: 1.02rem;
+  font-size: 0.96rem;
 }
 
-.door-list {
+/* ---------- Ground truth ---------- */
+.ground {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 44px;
+  align-items: center;
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+
+.ground-copy h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  margin: 14px 0 18px;
+  max-width: 18ch;
+}
+
+.ground-copy > p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  margin: 0 0 18px;
+}
+
+.ground-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 30px;
+  margin: 0 0 20px;
 }
 
-.door-list li {
+.ground-list li {
   position: relative;
   padding-left: 26px;
   margin-bottom: 9px;
   color: var(--ink);
-  font-size: 0.97rem;
+  font-size: 0.99rem;
 }
 
-.door-list li::before {
+.ground-list li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -245,9 +270,170 @@ a:hover {
   box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
 }
 
-/* push CTA to bottom for equal-height cards */
-.door .btn {
-  margin-top: auto;
+.ground-foot {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.99rem;
+}
+
+.ground-foot strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- Fleet-health mock card ---------- */
+.mock-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lift);
+  border: 1px solid rgba(24, 24, 27, 0.06);
+  padding: 22px 22px 18px;
+  font-size: 0.92rem;
+}
+
+.mock-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(24, 24, 27, 0.07);
+}
+
+.mock-title {
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.mock-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.mock-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(24, 24, 27, 0.05);
+}
+
+.mock-light {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.mock-light.is-green {
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.16), 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.mock-light.is-amber {
+  background: var(--ochre);
+  box-shadow: 0 0 0 3px rgba(230, 180, 112, 0.2), 0 0 8px rgba(230, 180, 112, 0.7);
+}
+
+.mock-light.is-red {
+  background: #e0524b;
+  box-shadow: 0 0 0 3px rgba(224, 82, 75, 0.16), 0 0 8px rgba(224, 82, 75, 0.55);
+}
+
+.mock-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mock-name {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.mock-state {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.state-green { color: var(--green-hover); }
+.state-amber { color: #b07a1f; }
+.state-red { color: #c5403a; }
+
+.mock-val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.mock-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  margin-top: 2px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.mock-foot-val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+/* ---------- Vendor strip ---------- */
+.vendors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+  justify-content: center;
+  padding-top: 28px;
+  padding-bottom: 64px;
+}
+
+.vendors-label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.vendor-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vendor-badges li {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid rgba(24, 24, 27, 0.08);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.vendor-badges .vendor-more {
+  background: transparent;
+  border: 1px dashed rgba(24, 24, 27, 0.18);
+  box-shadow: none;
+  color: var(--muted);
+  font-weight: 500;
+  font-style: italic;
 }
 
 /* ---------- Buttons ---------- */
@@ -302,58 +488,6 @@ a:hover {
   color: #4a3209;
 }
 
-/* ---------- Feature strip ---------- */
-.features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  padding-top: 48px;
-  padding-bottom: 72px;
-}
-
-.feature {
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 28px 26px;
-  border: 1px solid rgba(24, 24, 27, 0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.feature:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
-}
-
-.feature-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--green-deep);
-  margin-bottom: 16px;
-}
-
-.feature-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.feature h3 {
-  margin: 0 0 6px;
-  font-size: 1.12rem;
-  letter-spacing: -0.01em;
-}
-
-.feature p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.96rem;
-}
-
 /* ---------- Footer ---------- */
 .site-footer {
   text-align: center;
@@ -400,13 +534,12 @@ a:hover {
   transform: none;
 }
 
-/* small stagger for the door + feature grids */
-.doors .door:nth-child(2),
-.features .feature:nth-child(2) {
+/* small stagger for the steps grid */
+.steps .step:nth-child(2) {
   transition-delay: 0.08s;
 }
 
-.features .feature:nth-child(3) {
+.steps .step:nth-child(3) {
   transition-delay: 0.16s;
 }
 
@@ -419,8 +552,7 @@ a:hover {
     transform: none;
     transition: none;
   }
-  .door:hover,
-  .feature:hover,
+  .step:hover,
   .btn:hover {
     transform: none;
   }
@@ -428,17 +560,22 @@ a:hover {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
-  .doors {
+  .steps {
     grid-template-columns: 1fr;
   }
-  .features {
+  .ground {
     grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 48px;
+  }
+  .ground-copy h2 {
+    max-width: none;
   }
   .hero {
     padding-top: 52px;
     padding-bottom: 44px;
   }
-  .door {
-    padding: 30px 26px 32px;
+  .step {
+    padding: 26px 24px 28px;
   }
 }
