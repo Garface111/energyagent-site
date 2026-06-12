@@ -43,7 +43,7 @@ a:hover {
 /* ---------- Layout helpers ---------- */
 .site-header,
 .hero,
-.steps,
+.doors,
 .ground,
 .vendors,
 .site-footer {
@@ -147,76 +147,160 @@ a:hover {
   margin: 0 auto;
 }
 
-.hero-cta {
-  margin: 34px 0 0;
-}
-
-.hero-cta .btn {
-  align-self: center;
-}
-
-/* ---------- How it works ---------- */
-.steps {
+/* ---------- The doors ---------- */
+.doors {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
   padding-top: 16px;
   padding-bottom: 24px;
-  counter-reset: step;
 }
 
-.step {
+.door {
   position: relative;
+  overflow: hidden;
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 30px 28px 32px;
+  padding: 38px 36px 40px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid rgba(24, 24, 27, 0.05);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.step:hover {
-  transform: translateY(-3px);
+.door:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lift);
 }
 
-.step-icon {
+.door-glow {
+  position: absolute;
+  top: -90px;
+  right: -90px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.door:last-child .door-glow {
+  background: radial-gradient(circle, rgba(230, 180, 112, 0.22), transparent 70%);
+}
+
+.door-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.door h2 {
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  font-weight: 800;
+}
+
+.door h2::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: var(--ochre);
+}
+
+.door-body {
+  color: var(--muted);
+  margin: 16px 0 18px;
+  font-size: 1.02rem;
+}
+
+.door-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.door-list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 9px;
+  color: var(--ink);
+  font-size: 0.97rem;
+}
+
+.door-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+/* push CTA to bottom for equal-height cards */
+.door .btn {
+  margin-top: auto;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  gap: 10px;
+  align-self: flex-start;
+  padding: 14px 26px;
   border-radius: 10px;
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--green-deep);
-  margin-bottom: 16px;
+  font-weight: 650;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
-.step-icon svg {
-  width: 24px;
-  height: 24px;
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.28);
 }
 
-.step-num {
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.btn-primary:hover {
+  background: var(--green-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(16, 185, 129, 0.38);
+}
+
+.btn-accent {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(24, 24, 27, 0.18);
+}
+
+.btn-accent:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(24, 24, 27, 0.26);
+}
+
+.badge {
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--green-hover);
-  margin-bottom: 6px;
-}
-
-.step h3 {
-  margin: 0 0 8px;
-  font-size: 1.12rem;
-  letter-spacing: -0.01em;
-}
-
-.step p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.96rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--ochre);
+  color: #4a3209;
 }
 
 /* ---------- Ground truth ---------- */
@@ -436,58 +520,6 @@ a:hover {
   font-style: italic;
 }
 
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  align-self: flex-start;
-  padding: 14px 26px;
-  border-radius: 10px;
-  font-weight: 650;
-  font-size: 1rem;
-  letter-spacing: -0.01em;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-}
-
-.btn-primary {
-  background: var(--green);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.28);
-}
-
-.btn-primary:hover {
-  background: var(--green-hover);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(16, 185, 129, 0.38);
-}
-
-.btn-accent {
-  background: var(--ink);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(24, 24, 27, 0.18);
-}
-
-.btn-accent:hover {
-  background: #000;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(24, 24, 27, 0.26);
-}
-
-.badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: var(--ochre);
-  color: #4a3209;
-}
-
 /* ---------- Footer ---------- */
 .site-footer {
   text-align: center;
@@ -534,13 +566,9 @@ a:hover {
   transform: none;
 }
 
-/* small stagger for the steps grid */
-.steps .step:nth-child(2) {
+/* small stagger for the door grid */
+.doors .door:nth-child(2) {
   transition-delay: 0.08s;
-}
-
-.steps .step:nth-child(3) {
-  transition-delay: 0.16s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -552,7 +580,7 @@ a:hover {
     transform: none;
     transition: none;
   }
-  .step:hover,
+  .door:hover,
   .btn:hover {
     transform: none;
   }
@@ -560,7 +588,7 @@ a:hover {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
-  .steps {
+  .doors {
     grid-template-columns: 1fr;
   }
   .ground {
@@ -575,7 +603,7 @@ a:hover {
     padding-top: 52px;
     padding-bottom: 44px;
   }
-  .step {
-    padding: 26px 24px 28px;
+  .door {
+    padding: 30px 26px 32px;
   }
 }
