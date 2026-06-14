@@ -607,3 +607,17 @@ a:hover {
     padding: 30px 26px 32px;
   }
 }
+
+/* Secondary "Log in" link beneath each door's primary CTA. */
+.door-login {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--green-hover);
+  text-decoration: none;
+}
+.door-login:hover {
+  color: var(--green-deep);
+  text-decoration: underline;
+}
