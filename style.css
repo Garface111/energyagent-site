@@ -464,10 +464,29 @@ a:hover {
   box-shadow: 0 0 8px rgba(230, 180, 112, 0.6);
 }
 
-/* push CTA to bottom for equal-height cards */
-.door .btn {
+/* "See a sample account" link sits just above the CTA; its auto top-margin
+   pushes the whole CTA group (sample link + button + login) to the card bottom
+   so the cards stay equal height. */
+.door-sample {
   margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+  font-weight: 650;
 }
+
+.door--nepool .door-sample { color: var(--green-hover); }
+.door--array .door-sample { color: var(--ochre-deep); }
+
+.door-sample:hover {
+  text-decoration: underline;
+}
+
+.door--nepool .door-sample:hover { color: var(--green-deep); }
+.door--array .door-sample:hover { color: var(--ink); }
 
 /* ---------- Buttons ---------- */
 .btn {
