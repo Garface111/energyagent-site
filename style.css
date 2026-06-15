@@ -510,17 +510,6 @@ a:hover {
   box-shadow: 0 10px 26px rgba(24, 24, 27, 0.26);
 }
 
-.badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: var(--ochre);
-  color: #4a3209;
-}
-
 /* Secondary "Log in" link beneath each door's primary CTA. */
 .door-login {
   display: inline-block;
