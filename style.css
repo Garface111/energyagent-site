@@ -847,6 +847,10 @@ a:hover {
   .door {
     padding: 28px 24px 30px;
   }
+  /* full-width block CTAs on mobile so the longer labels wrap cleanly */
+  .door .btn {
+    align-self: stretch;
+  }
   .login-pop {
     width: 264px;
   }
