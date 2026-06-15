@@ -312,7 +312,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--line);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  will-change: transform;
 }
 
 /* a slim color rail at the top brands each door */
@@ -328,13 +329,34 @@ a:hover {
 .door--nepool::before { background: linear-gradient(90deg, var(--green), var(--green-deep)); }
 .door--array::before { background: linear-gradient(90deg, var(--ochre), var(--ochre-deep)); }
 
+/* Hover = the card dollies toward you: a bigger lift + a deeper, color-tinted
+   shadow so it reads as coming forward, not scaling up. */
 .door:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lift);
+  transform: translateY(-12px);
 }
 
-.door--nepool:hover { border-color: rgba(16, 185, 129, 0.4); }
-.door--array:hover { border-color: rgba(230, 180, 112, 0.55); }
+.door--nepool:hover {
+  border-color: rgba(16, 185, 129, 0.55);
+  box-shadow:
+    0 30px 64px rgba(16, 185, 129, 0.22),
+    0 12px 26px rgba(24, 24, 27, 0.12);
+}
+
+.door--array:hover {
+  border-color: rgba(230, 180, 112, 0.7);
+  box-shadow:
+    0 30px 64px rgba(230, 180, 112, 0.30),
+    0 12px 26px rgba(24, 24, 27, 0.12);
+}
+
+/* the top color rail brightens to a full bar as the card lifts */
+.door::before {
+  transition: height 0.28s ease;
+}
+
+.door:hover::before {
+  height: 6px;
+}
 
 .door-glow {
   position: absolute;
@@ -343,6 +365,12 @@ a:hover {
   width: 220px;
   height: 220px;
   pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+
+.door:hover .door-glow {
+  transform: scale(1.35);
+  opacity: 1.15;
 }
 
 .door--nepool .door-glow { background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%); }
@@ -792,6 +820,7 @@ a:hover {
     animation: none;
   }
   .door:hover,
+  .door:hover .door-glow,
   .btn:hover,
   .login-trigger:hover {
     transform: none;
