@@ -1,15 +1,18 @@
 :root {
   --cream: #faf8f5;
+  --cream-deep: #f3efe8;
   --green: #10b981;
   --green-hover: #059669;
   --green-deep: #065f46;
   --ochre: #e6b470;
+  --ochre-deep: #b07a1f;
   --ink: #18181b;
   --muted: #52525b;
   --card: #ffffff;
-  --radius: 12px;
+  --line: rgba(24, 24, 27, 0.08);
+  --radius: 14px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lift: 0 14px 38px rgba(24, 24, 27, 0.10);
   --max: 1080px;
 }
 
@@ -31,6 +34,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Warm sun-glow behind the top of the page so the doors sit in light. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 620px;
+  background:
+    radial-gradient(900px 420px at 50% -120px, rgba(16, 185, 129, 0.10), transparent 70%),
+    radial-gradient(700px 360px at 85% -60px, rgba(230, 180, 112, 0.12), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 a {
   color: var(--green-deep);
   text-decoration: none;
@@ -40,9 +56,14 @@ a:hover {
   color: var(--green-hover);
 }
 
+:focus-visible {
+  outline: 2px solid var(--green-hover);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 /* ---------- Layout helpers ---------- */
-.site-header,
-.hero,
+.lead,
 .doors,
 .ground,
 .vendors,
@@ -52,13 +73,33 @@ a:hover {
   padding-inline: 24px;
 }
 
-/* ---------- Header ---------- */
+/* ---------- Header (sticky) ---------- */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 26px;
-  padding-bottom: 10px;
+  gap: 16px;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 16px 24px;
+  background: rgba(250, 248, 245, 0.82);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid transparent;
+}
+
+/* full-bleed hairline under the (centered) header */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100vw;
+  border-bottom: 1px solid var(--line);
 }
 
 .wordmark {
@@ -87,21 +128,145 @@ a:hover {
   flex: none;
 }
 
-.header-link {
+/* ---------- Login menu (two services) ---------- */
+.login-menu {
+  position: relative;
+}
+
+.login-menu summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.login-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.login-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--ink);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.login-trigger:hover {
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.14);
+}
+
+.login-trigger .chev {
+  transition: transform 0.2s ease;
   color: var(--muted);
 }
 
-.header-link:hover {
+.login-menu[open] .login-trigger .chev {
+  transform: rotate(180deg);
+}
+
+.login-pop {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lift);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transform-origin: top right;
+  animation: pop 0.16s ease;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.login-pop-label {
+  padding: 8px 12px 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.login-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  color: var(--ink);
+  transition: background 0.15s ease;
+}
+
+.login-opt:hover {
+  background: var(--cream-deep);
+  color: var(--ink);
+}
+
+.login-opt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.login-opt-dot.is-green {
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.16);
+}
+
+.login-opt-dot.is-amber {
+  background: var(--ochre);
+  box-shadow: 0 0 0 3px rgba(230, 180, 112, 0.2);
+}
+
+.login-opt-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+  flex: 1;
+  min-width: 0;
+}
+
+.login-opt-name {
+  font-weight: 650;
+  font-size: 0.94rem;
+}
+
+.login-opt-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.login-opt-arrow {
+  color: var(--muted);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.login-opt:hover .login-opt-arrow {
+  transform: translateX(3px);
   color: var(--green-hover);
 }
 
-/* ---------- Hero ---------- */
-.hero {
+/* ---------- Lead (frames the choice) ---------- */
+.lead {
   text-align: center;
-  padding-top: 72px;
-  padding-bottom: 64px;
+  padding-top: 56px;
+  padding-bottom: 36px;
 }
 
 .eyebrow {
@@ -110,40 +275,21 @@ a:hover {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--green-hover);
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
 
-.hero h1 {
-  font-size: clamp(2.3rem, 5.4vw, 3.8rem);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+.lead h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
   font-weight: 800;
-  margin: 0 auto 22px;
-  max-width: 14ch;
-}
-
-.hero .hl {
-  position: relative;
-  white-space: nowrap;
-  color: var(--green-deep);
-}
-
-.hero .hl::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.04em;
-  height: 0.16em;
-  background: var(--ochre);
-  border-radius: 2px;
-  opacity: 0.85;
+  margin: 0 auto 18px;
 }
 
 .subhead {
-  font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+  font-size: clamp(1.02rem, 2vw, 1.2rem);
   color: var(--muted);
-  max-width: 56ch;
+  max-width: 58ch;
   margin: 0 auto;
 }
 
@@ -151,8 +297,8 @@ a:hover {
 .doors {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  padding-top: 16px;
+  gap: 26px;
+  padding-top: 8px;
   padding-bottom: 24px;
 }
 
@@ -162,17 +308,33 @@ a:hover {
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 38px 36px 40px;
+  padding: 34px 34px 38px;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(24, 24, 27, 0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid var(--line);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+/* a slim color rail at the top brands each door */
+.door::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.door--nepool::before { background: linear-gradient(90deg, var(--green), var(--green-deep)); }
+.door--array::before { background: linear-gradient(90deg, var(--ochre), var(--ochre-deep)); }
+
 .door:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lift);
 }
+
+.door--nepool:hover { border-color: rgba(16, 185, 129, 0.4); }
+.door--array:hover { border-color: rgba(230, 180, 112, 0.55); }
 
 .door-glow {
   position: absolute;
@@ -180,12 +342,30 @@ a:hover {
   right: -90px;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%);
   pointer-events: none;
 }
 
-.door:last-child .door-glow {
-  background: radial-gradient(circle, rgba(230, 180, 112, 0.22), transparent 70%);
+.door--nepool .door-glow { background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%); }
+.door--array .door-glow { background: radial-gradient(circle, rgba(230, 180, 112, 0.24), transparent 70%); }
+
+.door-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.door--nepool .door-icon {
+  color: var(--green-deep);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.door--array .door-icon {
+  color: var(--ochre-deep);
+  background: rgba(230, 180, 112, 0.18);
 }
 
 .door-kicker {
@@ -194,11 +374,11 @@ a:hover {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--muted);
-  margin: 0 0 14px;
+  margin: 0 0 10px;
 }
 
 .door h2 {
-  font-size: clamp(1.7rem, 3vw, 2.1rem);
+  font-size: clamp(1.7rem, 3vw, 2.05rem);
   letter-spacing: -0.02em;
   margin: 0 0 8px;
   font-weight: 800;
@@ -211,8 +391,10 @@ a:hover {
   height: 3px;
   margin-top: 12px;
   border-radius: 2px;
-  background: var(--ochre);
 }
+
+.door--nepool h2::after { background: var(--green); }
+.door--array h2::after { background: var(--ochre); }
 
 .door-body {
   color: var(--muted);
@@ -242,8 +424,16 @@ a:hover {
   width: 8px;
   height: 8px;
   border-radius: 50%;
+}
+
+.door--nepool .door-list li::before {
   background: var(--green);
   box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.door--array .door-list li::before {
+  background: var(--ochre);
+  box-shadow: 0 0 8px rgba(230, 180, 112, 0.6);
 }
 
 /* push CTA to bottom for equal-height cards */
@@ -303,13 +493,31 @@ a:hover {
   color: #4a3209;
 }
 
+/* Secondary "Log in" link beneath each door's primary CTA. */
+.door-login {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.door--nepool .door-login { color: var(--green-hover); }
+.door--array .door-login { color: var(--ochre-deep); }
+
+.door-login:hover {
+  text-decoration: underline;
+}
+
+.door--nepool .door-login:hover { color: var(--green-deep); }
+.door--array .door-login:hover { color: var(--ink); }
+
 /* ---------- Ground truth ---------- */
 .ground {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 44px;
   align-items: center;
-  padding-top: 64px;
+  padding-top: 72px;
   padding-bottom: 40px;
 }
 
@@ -580,8 +788,12 @@ a:hover {
     transform: none;
     transition: none;
   }
+  .login-pop {
+    animation: none;
+  }
   .door:hover,
-  .btn:hover {
+  .btn:hover,
+  .login-trigger:hover {
     transform: none;
   }
 }
@@ -594,30 +806,19 @@ a:hover {
   .ground {
     grid-template-columns: 1fr;
     gap: 32px;
-    padding-top: 48px;
+    padding-top: 56px;
   }
   .ground-copy h2 {
     max-width: none;
   }
-  .hero {
-    padding-top: 52px;
-    padding-bottom: 44px;
+  .lead {
+    padding-top: 40px;
+    padding-bottom: 28px;
   }
   .door {
-    padding: 30px 26px 32px;
+    padding: 28px 24px 30px;
   }
-}
-
-/* Secondary "Log in" link beneath each door's primary CTA. */
-.door-login {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--green-hover);
-  text-decoration: none;
-}
-.door-login:hover {
-  color: var(--green-deep);
-  text-decoration: underline;
+  .login-pop {
+    width: 264px;
+  }
 }
