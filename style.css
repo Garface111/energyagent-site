@@ -6,6 +6,10 @@
   --green-deep: #065f46;
   --ochre: #e6b470;
   --ochre-deep: #b07a1f;
+  --blue: #2563eb;
+  --blue-hover: #1d4ed8;
+  --blue-deep: #1e3a5f;
+  --blue-bg: rgba(37, 99, 235, 0.10);
   --ink: #18181b;
   --muted: #52525b;
   --card: #ffffff;
@@ -42,7 +46,7 @@ body::before {
   height: 620px;
   background:
     radial-gradient(900px 420px at 50% -120px, rgba(16, 185, 129, 0.10), transparent 70%),
-    radial-gradient(700px 360px at 85% -60px, rgba(230, 180, 112, 0.12), transparent 70%);
+    radial-gradient(700px 360px at 85% -60px, rgba(37, 99, 235, 0.08), transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
@@ -230,8 +234,8 @@ a:hover {
 }
 
 .login-opt-dot.is-amber {
-  background: var(--ochre);
-  box-shadow: 0 0 0 3px rgba(230, 180, 112, 0.2);
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
 }
 
 .login-opt-text {
@@ -327,7 +331,7 @@ a:hover {
 }
 
 .door--nepool::before { background: linear-gradient(90deg, var(--green), var(--green-deep)); }
-.door--array::before { background: linear-gradient(90deg, var(--ochre), var(--ochre-deep)); }
+.door--array::before { background: linear-gradient(90deg, var(--blue), var(--blue-hover)); }
 
 /* Hover = the card dollies toward you: a bigger lift + a deeper, color-tinted
    shadow so it reads as coming forward, not scaling up. */
@@ -343,9 +347,9 @@ a:hover {
 }
 
 .door--array:hover {
-  border-color: rgba(230, 180, 112, 0.7);
+  border-color: rgba(37, 99, 235, 0.5);
   box-shadow:
-    0 30px 64px rgba(230, 180, 112, 0.30),
+    0 30px 64px rgba(37, 99, 235, 0.22),
     0 12px 26px rgba(24, 24, 27, 0.12);
 }
 
@@ -374,7 +378,7 @@ a:hover {
 }
 
 .door--nepool .door-glow { background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%); }
-.door--array .door-glow { background: radial-gradient(circle, rgba(230, 180, 112, 0.24), transparent 70%); }
+.door--array .door-glow { background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 70%); }
 
 .door-icon {
   display: inline-flex;
@@ -392,8 +396,8 @@ a:hover {
 }
 
 .door--array .door-icon {
-  color: var(--ochre-deep);
-  background: rgba(230, 180, 112, 0.18);
+  color: var(--blue);
+  background: var(--blue-bg);
 }
 
 .door-kicker {
@@ -422,7 +426,7 @@ a:hover {
 }
 
 .door--nepool h2::after { background: var(--green); }
-.door--array h2::after { background: var(--ochre); }
+.door--array h2::after { background: var(--blue); }
 
 .door-body {
   color: var(--muted);
@@ -460,8 +464,8 @@ a:hover {
 }
 
 .door--array .door-list li::before {
-  background: var(--ochre);
-  box-shadow: 0 0 8px rgba(230, 180, 112, 0.6);
+  background: var(--blue);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
 }
 
 /* "See a sample account" link sits just above the CTA; its auto top-margin
@@ -479,14 +483,14 @@ a:hover {
 }
 
 .door--nepool .door-sample { color: var(--green-hover); }
-.door--array .door-sample { color: var(--ochre-deep); }
+.door--array .door-sample { color: var(--blue); }
 
 .door-sample:hover {
   text-decoration: underline;
 }
 
 .door--nepool .door-sample:hover { color: var(--green-deep); }
-.door--array .door-sample:hover { color: var(--ink); }
+.door--array .door-sample:hover { color: var(--blue-hover); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -517,16 +521,16 @@ a:hover {
 }
 
 .btn-accent {
-  background: var(--ink);
+  background: var(--blue);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(24, 24, 27, 0.18);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.28);
 }
 
 .btn-accent:hover {
-  background: #000;
+  background: var(--blue-hover);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(24, 24, 27, 0.26);
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.38);
 }
 
 /* Secondary "Log in" link beneath each door's primary CTA. */
@@ -538,14 +542,14 @@ a:hover {
 }
 
 .door--nepool .door-login { color: var(--green-hover); }
-.door--array .door-login { color: var(--ochre-deep); }
+.door--array .door-login { color: var(--blue); }
 
 .door-login:hover {
   text-decoration: underline;
 }
 
 .door--nepool .door-login:hover { color: var(--green-deep); }
-.door--array .door-login:hover { color: var(--ink); }
+.door--array .door-login:hover { color: var(--blue-hover); }
 
 /* ---------- Ground truth ---------- */
 .ground {
